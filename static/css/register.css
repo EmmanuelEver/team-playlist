@@ -1,0 +1,197 @@
+
+	body{
+		padding: 0;
+		margin: 0;
+		font-family: 'Montserrat', sans-serif;
+
+	}	
+	.container{
+		position: relative;
+		padding: 0;
+		margin: 0;
+		width: 100vw;
+		height: 100vh;
+		background-image: url("../images/landing.jpg");
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-color: rgba(202, 211, 200,0.7);
+		opacity: 0.9;
+		display: flex;
+		align-items: flex-end;
+
+	}
+
+	.box {
+		position: relative;
+		background-color: rgba(92, 225, 230, 0.9);	
+	}
+	.register-container {
+		width: 50vw;
+		height: 80vh;
+		display: flex;
+		    flex-direction: column;
+		    align-items: center;
+	}
+	.register-header{
+		width: 100%;
+	    height: 30%;
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	    position: relative;
+	}
+	.register-header h1{
+		color: white;
+	    position: absolute;
+	    width: 80vw;
+	    font-size: 8vw;
+	    text-shadow: 0 1px 0 #ccc,
+               0 2px 0 #c9c9c9,
+               0 3px 0 #bbb,
+               0 4px 0 #b9b9b9,
+               0 5px 0 #aaa,
+               0 6px 1px rgba(0,0,0,.1),
+               0 0 5px rgba(0,0,0,.1),
+               0 1px 3px rgba(0,0,0,.3),
+               0 3px 5px rgba(0,0,0,.2),
+               0 5px 10px rgba(0,0,0,.25),
+               0 10px 10px rgba(0,0,0,.2),
+               0 20px 20px rgba(0,0,0,.15);
+	}
+	.register-form{
+		width: 100%;
+		height: auto;
+
+	}
+	.register-form form{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-between
+	}
+	.form-group{
+		position: relative;
+		height: 50px;
+		width: 70%;
+		overflow: hidden;
+		margin-bottom: 25px;
+	}
+	.form-group input{
+		background-color: transparent;
+		width: 100%;
+		height: 100%;
+		border: none;
+		padding-top: 10px;
+		outline: none;
+	}
+
+	.form-group label{
+		color: 37, 40, 61;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		bottom: 0px;
+		left: 0%;
+		pointer-events: none;
+		border-bottom: 2px solid rgb(35, 181, 211);
+	}
+	.form-group label::after{
+		content: "";
+		position: absolute;
+		left: 0px;
+		bottom: -1px;
+		height: 100%;
+		width: 100%;
+		border-bottom: 3px solid rgba(255, 255, 255,1.0);
+		transform: translateX(-100%);
+		transition: transform 0.3s ease;   
+	}
+
+	.content-name{
+		font-family: 'Recursive', sans-serif;
+		position: absolute;
+		bottom: 5px;
+		left: 0px;
+		transition: all 0.3s ease;
+	}
+	.form-group input:focus + .label-name .content-name,
+	.form-group input:valid + .label-name .content-name{
+		transform: translateY(-150%);
+		color: rgba(255, 255, 255,1.0);
+	}
+	.form-group input:focus + .label-name::after,
+	.form-group input:valid + .label-name::after {
+		transform: translateX(0);
+	}
+
+	.register-btn{
+		border: 1px solid white;
+	    background-color: rgba(92, 225, 230, 0.7);
+	    border-radius: 30px;
+	    width: 120px;
+	    height: 50px;
+	    font-family: 'Montserrat', sans-serif;
+	    font-size: 1.3em;
+	    color: rgba(255, 255, 255,1.0);
+	    cursor: pointer;
+	    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+	}
+	.register-btn:hover{
+	    background-color: rgb(35, 181, 211);
+		/*border: 3px solid white;*/
+		padding: 10px;
+	}
+
+
+
+
+@media only screen and (min-width: 300px){
+	.register-container{
+		width: 100vw;
+		right: 0;
+	}
+	.register-header h1{
+		font-size: 10vw;
+	}
+	.content-name{
+		font-size: 30px;
+	}
+	.form-group{
+		margin-bottom: 65px;
+	}
+	.register-btn{
+		width: 150px;
+		height: 70px;
+		font-size: 1.3em;
+	}
+
+}
+
+@media only screen and (min-width: 700px){
+	.container{
+		justify-content: center;
+	}
+	.box{
+		border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
+
+	}
+	.register-container{
+		width: 50vw;
+	}
+	.register-header h1{
+		font-size: 8vw;
+	}
+	.form-group{
+		margin-bottom: 15px;
+	}
+	.content-name{
+		font-size: 15px;
+	}
+	.register-btn{
+		width: 90px;
+		height: 40px;
+		font-size: 0.8em;
+	}
+}

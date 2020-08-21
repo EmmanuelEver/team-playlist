@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/landing.css">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap&family=Recursive:wght@500&display=swap" rel="stylesheet">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+</head>
+<body>
+	<div class="container">
+		<div class="brand-container box">
+			<div class="brand">
+				<h1>TEAM JAM</h1>
+				<p>A team playlist where every member can add their favorite music from youtube</p>
+			</div>
+		</div>
+		<div class="login-container box">
+			<div class="login-header">
+				<h1>JOIN A ROOM</h1>	
+			</div>
+			<div class="login-form">
+				<form action="/" method="POST">
+					<div class="inputs-container">
+							<div class="form-group">
+								<input type="text" id="roomname" name="roomname" autocomplete="off" required>
+								<label for="roomname" class="label-name">
+									<span class="content-name">Room name</span>
+								</label>
+							</div>
+							<div class="form-group">
+								<input type="password" id="password" name="password" autocomplete="off" required>
+								<label for="password" class="label-name">
+									<span class="content-name">Room password</span>
+								</label>
+							</div>
+							<div class="form-group">
+								<input type="text" id="guestname" name="guestname" autocomplete="off" required>
+								<label for="guestname" class="label-name">
+									<span class="content-name">Guest name</span>
+								</label>
+							</div>
+							<button type="submit" class="btn join-btn">JOIN</button>
+					</div>
+				</form>
+			</div>
+			<div class="register-link">
+				<a href="/create_room"> Create own room</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

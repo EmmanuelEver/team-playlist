@@ -1,0 +1,280 @@
+	body{
+		padding: 0;
+		margin: 0;
+		}
+	p, h1{
+		margin: 0;
+	}
+	h1{
+		font-family: 'Montserrat', sans-serif;
+		text-shadow: 0 1px 0 #ccc,
+               0 2px 0 #c9c9c9,
+               0 3px 0 #bbb,
+               0 4px 0 #b9b9b9,
+               0 5px 0 #aaa,
+               0 6px 1px rgba(0,0,0,.1),
+               0 0 5px rgba(0,0,0,.1),
+               0 1px 3px rgba(0,0,0,.3),
+               0 3px 5px rgba(0,0,0,.2),
+               0 5px 10px rgba(0,0,0,.25),
+               0 10px 10px rgba(0,0,0,.2),
+               0 20px 20px rgba(0,0,0,.15);
+	
+	}	
+	.container{
+		position: relative;
+		height: 100vh;
+		width: 100vw;
+		background-image: url("../images/landing.jpg");
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-color: rgba(202, 211, 200,0.7);
+		opacity: 0.9;
+	}
+
+	.box {
+		position: absolute;
+		background-color: rgba(92, 225, 230, 0.8);
+		
+	}
+
+	.brand-container{
+		top: 0;
+		left: 5%;
+		width: 450px;
+		height: 80vh;
+		display: flex;
+		align-items: flex-end;
+	}
+	.brand {
+		height: 50%;
+		padding: 0 30px;
+		color: rgba(47, 53, 66,1.0)
+	}
+	.brand h1{
+		font-size: 65px;
+	}
+	.brand p{
+		font-size: 1.3em;
+		font-family: 'Recursive', sans-serif;
+		line-height: 1;
+		margin-top: 10px;
+	}
+
+	.login-container{
+		bottom: 0;
+		right: 10%;
+		width: 450px;
+		height: 80vh;
+		display: flex;
+		flex-direction: column;
+		color: rgba(255, 255, 255,1.0);
+	}
+
+	.login-header h1{
+		font-size: 50px;
+	}
+
+	.login-header{
+		height: 30%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.login-form{
+		height: auto;
+		color: rgba(47, 53, 66,1.0);
+		font-family: 'Recursive', sans-serif;
+
+
+	}
+	.inputs-container{
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: center;
+	}
+	.form-group{
+		position: relative;
+		height: 50px;
+		width: 70%;
+		overflow: hidden;
+	}
+	.form-group input{
+		background-color: transparent;
+		width: 100%;
+		height: 100%;
+		border: none;
+		padding-top: 10px;
+		outline: none;
+	}
+
+	.form-group label{
+		color: rgba(47, 53, 66,1.0);
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		bottom: 0px;
+		left: 0%;
+		pointer-events: none;
+		border-bottom: 2px solid rgb(35, 181, 211);
+	}
+	.form-group label::after{
+		content: "";
+		position: absolute;
+		left: 0px;
+		bottom: -1px;
+		height: 100%;
+		width: 100%;
+		border-bottom: 3px solid rgba(255, 255, 255,1.0);
+		transform: translateX(-100%);
+		transition: transform 0.3s ease;   
+	}
+	.content-name{
+		position: absolute;
+		bottom: 5px;
+		left: 0px;
+		transition: all 0.3s ease;
+	}
+	.form-group input:focus + .label-name .content-name,
+	.form-group input:valid + .label-name .content-name{
+		transform: translateY(-150%);
+		color: rgba(255, 255, 255,1.0);
+	}
+	.form-group input:focus + .label-name::after,
+	.form-group input:valid + .label-name::after {
+		transform: translateX(0);
+	}
+
+	.join-btn{
+		margin-top: 20px;
+		border: 1px solid white;
+	    background-color: rgba(92, 225, 230, 0.7);
+	    border-radius: 30px;
+	    width: 120px;
+	    height: 50px;
+	    font-family: 'Montserrat', sans-serif;
+	    font-size: 1.3em;
+	    color: rgba(255, 255, 255,1.0);
+	    cursor: pointer;
+	    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+
+	}
+	.join-btn:hover{
+	    background-color: rgb(35, 181, 211);
+		border: 3px solid white;
+		padding: 10px;
+	}
+
+	.register-link{
+		height: 20%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.register-link a{
+		text-decoration: none;
+	    color: rgba(47, 53, 66,1.0);
+	    font-family:'Montserrat', sans-serif;
+	    font-size: 1.5em;
+	    font-weight: 200;
+	    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+	}
+
+
+@media only screen and (max-width:1100px){
+	.login-header h1{
+		font-size: 45px;
+	}
+	.brand h1{
+		font-size: 55px;
+	}
+	.join-btn{
+		width: 70px;
+		height: 40px;
+		font-size: 1em;
+	}
+	.login-container, .brand-container{
+		width: 400px;
+		height: 70vh;
+	}
+}
+
+@media only screen and (max-width: 940px){
+	.brand-container{
+		left: 2%;
+	}
+	.login-container{
+		right: 2%;
+	}
+	.login-container, .brand-container{
+		width: 360px;
+		height: 70vh;
+	}
+}
+
+@media only screen and (max-width: 750px){
+	.box{
+		position: relative;
+	}
+	.container{
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+	}
+	.brand-container{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	.login-header h1{
+		font-size: 33px;
+	}
+
+}
+
+@media only screen and (max-width: 487px){
+	.login-header h1{
+		font-size: 25px;
+	}
+	.register-link a{
+		font-size: 20px;
+	}
+	.content-name{
+		font-size: 14px;
+	}
+}
+
+@media only screen and (max-width: 420px){
+	.container{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		justify-content: space-between;
+	}
+	.login-container{
+		right: 0;
+		height: 55vh;
+		width: 100%;
+	}
+	.login-header{
+		height: 17%;
+	}
+	.login-form{
+		height: auto;
+	}
+	
+	.brand-container{
+		left: 0;
+		height: 45vh;
+		background: transparent;
+	}
+	.join-btn{
+		width: 70px;
+	    height: 40px;
+	    font-size: 0.8em;
+	    border-radius: 20px;
+	}
+}

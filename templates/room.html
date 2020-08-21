@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Room</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/room.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap&family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+  </head>
+  <body>
+
+    <div class="container">
+        <div class="options-toggle" onclick="show_options()">
+          <i class="fa fa-cog fa-spin" aria-hidden="true"></i>
+        </div>
+
+<!--         modal here         -->
+        <div id="optionsModal" class="modal hidden">
+          <div class="modal-content">
+            <div class="modal-header">
+                <h3>Settings</h3>
+                  <span class="closeBtn" onclick="show_options()">&times;</span>
+            </div>
+            <div class="modal-body">
+                 <div class="users option-item">
+                   <h4 onclick="showUsers()">Users</h4>
+                   <div class="user-list hidden">
+                   </div>
+                 </div>
+                 <div class="delete-room option-item">
+                   <h4 onclick="showDeleteForm()">Delete room</h4>
+                   <div class="delete-validation-container hidden">
+                     <div class="delete-validation">
+                     <h5>Enter the master password:</h5>
+                     <div class="form">
+                       <input type="text" id="masterpassword" name="masterpassword" autocomplete="off" required>
+                     </div>
+                   </div>
+                   <button type="button" class="deleteBtn">Delete</button>
+                   </div>
+                 </div>
+                 <div class="leave-room option-item">
+                   <a href="/exit"><h4>Leave room</h4></a>
+                 </div>
+            </div>
+          </div>
+        </div>
+    
+      <div class="container-player">
+        <div class="main-container">
+          <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+          <div id="player"></div>
+        </div>
+        
+        <div class="search-container">
+            <div class="search-box">
+              <input type="text" name="search" onkeypress="search_music(this)" placeholder="Enter music title" class="search-input" autocomplete="off">
+              <i class="fa fa-search search-icon" aria-hidden="true"></i>
+            </div>
+            <div class="search-results hidden">
+              <div class="result-item"  data-videoId="rUWxSEwctFU">
+                <div class="result-item-thumb">
+                  <img src="../static/images/landing.jpg">
+                </div>
+                 <div class="result-item-details">
+                  <h3 class="result-item-title" style="text-overflow: ellipsis;">The day you said Goodnight</h3>
+                  <p class="result-item-channel"> by: <strong>Hale </strong> <span class="date-uploaded">June 24, 2012</span></p>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="queue-container"> 
+          <div class="queue-item" data-id=${id}>
+                              <div class="music-thumb">
+                                <img src="${thumbnail}">
+                              </div>
+                              <div class="music-details">
+                                <h3 class="music-title">${title}</h3>
+                                <p class="result-item-channel"> by: <strong>${channel} </strong> <span class="date-uploaded">${publishTime}</span></p>
+                                <p class="added-by">added by: ${added_by}</p>
+                              </div> 
+                            </div>
+        </div>
+            
+      </div>
+
+    </div>
+    <script type="text/javascript" src="../static/js/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.1.18/jquery.backstretch.min.js"></script>
+    <script type="text/javascript" src="../static/js/youtube.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../static/js/script.js"></script>
+    <script type="text/javascript">
+      $.backstretch("../static/images/room.jpg"); 
+      const username = "{{username}}"
+      console.log(username)
+      var options = $(".modal")[0]
+      var userlist = $(".user-list")[0]
+      var deleteForm = $(".delete-validation-container")[0]
+      $(window).on("click", function(event){
+        if (event.target == options){
+          show_options()
+        }
+      })
+      function show_options(){
+        $(options).toggleClass("hidden")
+      }
+      function showUsers(){
+        $(userlist).toggleClass("hidden")
+      }
+      function showDeleteForm(){
+        $(deleteForm).toggleClass("hidden")
+      }
+    </script>
+  </body>
+</html>
