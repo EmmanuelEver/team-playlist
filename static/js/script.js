@@ -1,4 +1,4 @@
-    var socket = io.connect('http://' + document.domain + ':' + location.port + '/room');
+    var socket = io.connect('https://' + document.domain + ':' + location.port + '/room');
 
     socket.on("connect", function() {
         socket.send(`new user ${username}`);
