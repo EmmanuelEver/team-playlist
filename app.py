@@ -295,5 +295,5 @@ def finished_music(data):
 #     	users =  room.get_users() 
 #     	emit("new-user", users , broadcast = True)
 
-# if __name__ == "__main__":
-# 	socketio.run(app, host = "0.0.0.0", port = 8000)
+if __name__ == "__main__":
+	socketio.run(app)
