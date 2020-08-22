@@ -1,6 +1,6 @@
-    var socket = io.connect('https://' + document.domain + ':' + location.port + '/room');
+var socket = io.connect('https://' + document.domain + ':' + location.port + '/room');
 
-    socket.on("connect", function() {
+socket.on("connect", function() {
         socket.send(`new user ${username}`);
         socket.emit("new-user",{user : username})
     });
@@ -10,6 +10,7 @@ var queue = []
 var results_container = $(".search-results")[0]
 var queue_container = $(".queue-container")[0]
 var search_input = $(".search-input")[0]
+var search_icon = $(".search_box i")[0]
 
 
 socket.on("new-user", function(data){
@@ -72,9 +73,12 @@ $(results_container).on("click",".result-item", function(){
   /*function for querying resources from the youtube api */
      
 function search_music(elem){
-  $(results_container).removeClass("hidden")
+  $(search_icon).addClass("hidden")
+  if ($(elem).val().length >= 3){
+    $(results_container).removeClass("hidden")
         fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${$(elem).val()}&type=video&maxResults=10&key=${youtube_key}`)
         .then(function(response){
+          console.log(response)
          response.json()
         .then(function(data){
           console.log(data)
@@ -102,7 +106,13 @@ function search_music(elem){
           console.log(results)
           $(results_container).html(results)
         })
-        })          
+        })
+
+  }
+else
+  {
+    $(results_container).addClass("hidden");
+  }            
 }      
 
     /* a simple function to format date */
@@ -142,4 +152,9 @@ function addToQueueDiv(id, video_id, title, channel, publishTime, thumbnail, add
                             </div> 
                            `
    $(queue_container).append(queue_item)       
+}
+
+function clear_input(elem){
+  $(elem).val("");
+  $(search_icon).removeClass("hidden")
 }

@@ -19,6 +19,7 @@
       position: absolute;
       top: 1%;
       right: 4%;
+      cursor: pointer;
     }
     .options-toggle i{
       font-size: 2em;
@@ -79,6 +80,7 @@
     }
     .option-item h4{
       margin: 10px;
+      cursor: pointer;
     }
     .users{
 
@@ -96,6 +98,7 @@
       justify-content: space-between;
       width: 60px;
       height: 30px;
+      cursor: pointer;
     }
     .user-item img{
       width: 25px;
@@ -140,14 +143,17 @@
       background-color: #ff4757;
       color: black;
       border: 1px solid wheat;
+      outline: pink;
+      cursor: pointer;
     }
     .leave-room a{
       text-decoration: none;
       color: black; 
     }
     .container-player{
+      margin: auto 5px;
       width: 75vw;
-      height: 75vh;
+      max-height: 75vh;
       background-color:rgba(83, 92, 104,0.4);
       border-top-right-radius: 15px;
       border-top-left-radius: 15px;

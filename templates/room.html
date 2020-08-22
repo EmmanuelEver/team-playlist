@@ -12,7 +12,7 @@
 
     <div class="container">
         <div class="options-toggle" onclick="show_options()">
-          <i class="fa fa-cog fa-spin" aria-hidden="true"></i>
+          <i class="fa fa-cog" aria-hidden="true"></i>
         </div>
 
 <!--         modal here         -->
@@ -55,11 +55,11 @@
         
         <div class="search-container">
             <div class="search-box">
-              <input type="text" name="search" onkeypress="search_music(this)" placeholder="Enter music title" class="search-input" autocomplete="off">
+              <input type="text" name="search" onkeypress="search_music(this)" onfocusout="clear_input(this)" placeholder="Enter music title" class="search-input" autocomplete="off">
               <i class="fa fa-search search-icon" aria-hidden="true"></i>
             </div>
             <div class="search-results hidden">
-              <div class="result-item"  data-videoId="rUWxSEwctFU">
+              <!-- <div class="result-item"  data-videoId="rUWxSEwctFU">
                 <div class="result-item-thumb">
                   <img src="../static/images/landing.jpg">
                 </div>
@@ -67,20 +67,13 @@
                   <h3 class="result-item-title" style="text-overflow: ellipsis;">The day you said Goodnight</h3>
                   <p class="result-item-channel"> by: <strong>Hale </strong> <span class="date-uploaded">June 24, 2012</span></p>
                 </div>
-              </div>
+              </div> -->
             </div>
         </div>
         <div class="queue-container"> 
-          <div class="queue-item" data-id=${id}>
-                              <div class="music-thumb">
-                                <img src="${thumbnail}">
-                              </div>
-                              <div class="music-details">
-                                <h3 class="music-title">${title}</h3>
-                                <p class="result-item-channel"> by: <strong>${channel} </strong> <span class="date-uploaded">${publishTime}</span></p>
-                                <p class="added-by">added by: ${added_by}</p>
-                              </div> 
-                            </div>
+
+
+
         </div>
             
       </div>
@@ -88,9 +81,9 @@
     </div>
     <script type="text/javascript" src="../static/js/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.1.18/jquery.backstretch.min.js"></script>
-    <script type="text/javascript" src="../static/js/youtube.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="../static/js/script.js"></script>
+    <script type="text/javascript" src="../static/js/youtube.js"></script>
     <script type="text/javascript">
       $.backstretch("../static/images/room.jpg"); 
       const username = "{{username}}"
