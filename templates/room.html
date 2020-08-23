@@ -14,7 +14,6 @@
         <div class="options-toggle" onclick="show_options()">
           <i class="fa fa-cog" aria-hidden="true"></i>
         </div>
-
 <!--         modal here         -->
         <div id="optionsModal" class="modal hidden">
           <div class="modal-content">
@@ -31,14 +30,16 @@
                  <div class="delete-room option-item">
                    <h4 onclick="showDeleteForm()">Delete room</h4>
                    <div class="delete-validation-container hidden">
-                     <div class="delete-validation">
-                     <h5>Enter the master password:</h5>
-                     <div class="form">
-                       <input type="text" id="masterpassword" name="masterpassword" autocomplete="off" required>
+                    <form action="/delete-room" method="POST">
+                       <div class="delete-validation">
+                       <h5>Enter the master password:</h5>
+                       <div class="form">
+                         <input type="text" id="masterpassword" name="masterpassword" autocomplete="off" required>
+                       </div>
+                       </div>
+                     <button type="submit" class="deleteBtn">Delete</button>
+                     </form>
                      </div>
-                   </div>
-                   <button type="button" class="deleteBtn">Delete</button>
-                   </div>
                  </div>
                  <div class="leave-room option-item">
                    <a href="/exit"><h4>Leave room</h4></a>

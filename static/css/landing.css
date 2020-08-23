@@ -32,7 +32,30 @@
 		background-color: rgba(202, 211, 200,0.7);
 		opacity: 0.9;
 	}
+	.flash{
+			position: absolute;
+			top: 3%;
+			left: 50%;
+			z-index: 10;
+			width: fit-contet;
+			height: auto;
+			padding: 5px 10px;
+			border-radius:10px;
 
+		}
+	.danger{
+			background-color: coral;
+			border: 1px solid darkgrey;
+	 		font-family: 'Recursive', sans-serif;
+
+		}
+	.success{
+		background-color: lightgreen;
+		border: 1px solid darkgrey;
+	}
+	.flash p{
+			margin: 0;
+		}	
 	.box {
 		position: absolute;
 		background-color: rgba(92, 225, 230, 0.8);

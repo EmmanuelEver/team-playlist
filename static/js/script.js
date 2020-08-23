@@ -1,4 +1,4 @@
-var socket = io.connect('https://' + document.domain + ':' + location.port + '/room');
+var socket = io.connect('http://' + document.domain + ':' + location.port + '/room');
 
 socket.on("connect", function() {
         socket.send(`new user ${username}`);
@@ -29,9 +29,7 @@ socket.on("new-user", function(data){
 
 
 socket.on("get-queue", function(data){
-  console.log(data)
   data.forEach(function(video){
-    console.log(`video: ${video}`)
     queue.push(video)
     addToQueueDiv(video.id, video.video_id, video.video_title, video.channel, video.publishTime, video.thumbnail, video.added_by)
   })

@@ -28,6 +28,7 @@ def load_user(user_id):
 
 @app.before_first_request
 def create_db():
+	db.drop_all()
 	db.create_all()
 
 class Room(UserMixin,db.Model):
@@ -85,7 +86,7 @@ class Room(UserMixin,db.Model):
 class User(db.Model):
 	__tablename__ = "users"
 	id = db.Column(db.Integer, primary_key = True)
-	username = db.Column(db.String(30), unique = True, nullable = False)
+	username = db.Column(db.String(30),nullable = False)
 	room_id = db.Column(db.Integer, db.ForeignKey("rooms.id"))
 
 	def __init__(self, username):
@@ -180,7 +181,7 @@ def landing():
 				new_user = User(user)
 				new_user.save_to_db()
 				room.add_user(new_user)
-				session["user"] = user
+				session["user"] = new_user.username
 				session["id"] = new_user.id
 				next_page = request.args.get("next")
 				loc = "room" if not next_page or url_parse(next_page) else next_page
@@ -189,7 +190,7 @@ def landing():
 			flash("room password is incorrect", category="danger")
 			return redirect(url_for("landing"))
 
-		flash(f"No room with name, {roomname}", category="danger")
+		flash(f"""room name"{roomname}" doesn't exist""", category="danger")
 		return redirect(url_for("landing"))
 
 	return render_template("landing.html")
@@ -198,23 +199,27 @@ def landing():
 @app.route("/create_room", methods=["GET", "POST"])
 def new_room():
 	if request.method == "POST":
-		try:
-			data = request.form.to_dict()
-			user = User(data.get("guestname","anonymous"))
-			data.pop("guestname")
-			data["date_created"] = datetime.date(datetime.now())
-			room = Room(**data)
-			room.save_to_db()
-			user.save_to_db()
-			room.add_user(user)
-			login_user(room)
-			session["user"] = user.username
-			session["id"] = user.id
-			return redirect(url_for("room"))
-		except Exception as e:
-			print(e)
-			return redirect(url_for(request.url))
-
+		data = request.form.to_dict()
+		user = User(data.get("guestname","anonymous"))
+		data.pop("guestname")
+		data["date_created"] = datetime.date(datetime.now())
+		room = Room.find_by_roomname(data.get("roomname"))
+		if not room:
+			try:
+				new_room = Room(**data)
+				new_room.save_to_db()
+				user.save_to_db()
+				new_room.add_user(user)
+				login_user(new_room)
+				session["user"] = user.username
+				session["id"] = user.id
+				return redirect(url_for("room"))
+			except Exception as e:
+				flash(e.message, category="danger")
+				print(e.__str__())
+				return redirect(request.url)
+		flash("roomname already exist, please try another one", category="danger")		
+		return redirect(request.url)
 	return render_template("register.html")
 
 
@@ -244,6 +249,7 @@ def delete_room():
 		room = Room.find_by_roomname(current_user.roomname)
 		if room and safe_str_cmp(room.masterKey, data["masterpassword"]):
 			room.delete_from_db()
+			flash("Room has been deleted", category="success")
 			return redirect(url_for("landing"))
 		return jsonify({"msg" : "Invalid credentials"}), 401
 

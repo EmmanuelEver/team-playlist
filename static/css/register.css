@@ -21,7 +21,29 @@
 		align-items: flex-end;
 
 	}
+	.flash{
+			position: absolute;
+			top: 3%;
+			z-index: 10;
+			width: fit-contet;
+			height: auto;
+			margin: 0 auto;
+			padding: 5px 10px;
+			border-radius:10px;
+	 		font-family: 'Recursive', sans-serif;
 
+		}
+	.danger{
+			background-color: coral;
+			border: 1px solid darkgrey;
+		}
+	.success{
+		background-color: lightgreen;
+		border: 1px solid darkgrey;
+	}
+	.flash p{
+			margin: 0;
+		}
 	.box {
 		position: relative;
 		background-color: rgba(92, 225, 230, 0.9);	
