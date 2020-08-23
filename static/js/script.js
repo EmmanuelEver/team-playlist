@@ -5,7 +5,7 @@ socket.on("connect", function() {
         socket.emit("new-user",{user : username})
     });
 
-const youtube_key = "AIzaSyDHiJGzz1h_qNV5yDNw3ry1oMeKuIxsfsc"
+var youtube_key = "AIzaSyDHiJGzz1h_qNV5yDNw3ry1oMeKuIxsfsc"
 var queue = []
 var results_container = $(".search-results")[0]
 var queue_container = $(".queue-container")[0]
